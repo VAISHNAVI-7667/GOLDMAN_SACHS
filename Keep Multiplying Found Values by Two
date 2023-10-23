@@ -1,0 +1,44 @@
+// Using HashSet in Java
+
+class Solution {
+    public int findFinalValue(int[] nums, int original) {
+        
+        int num=original;
+         HashSet<Integer> set=new HashSet();
+         for(int a:nums)
+             set.add(a);
+         while(set.contains(num))
+             num*=2;
+         return num;
+        
+        
+    }
+}
+
+
+// BruteForce method
+
+class Solution {
+    public int findFinalValue(int[] nums, int original) {
+        
+        int a = 1,flag=0;
+        while(a>0)
+        {
+            flag=0;
+            for(int i=0;i<nums.length;i++)
+            {
+                if(nums[i]==original)
+                {
+                    original = 2 * original;
+                    flag=1;
+                }
+            }
+            if(flag==0)
+            {
+                break;
+            }
+        } 
+        return original;
+        
+    }
+}
