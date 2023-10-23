@@ -1,0 +1,62 @@
+//   BruteForce approach O(n^3)
+
+class Solution {
+    public int numTeams(int[] rating) {
+        int count=0;
+        for(int i=0;i<rating.length;i++)
+        {
+            for(int j=i+1;j<rating.length;j++)
+            {
+                for(int k=j+1;k<rating.length;k++)
+                {
+                    if(rating[i]<rating[j] && rating[j]<rating[k])
+                    {
+                        count++;
+                    }
+                     if(rating[i]>rating[j] && rating[j]>rating[k])
+                    {
+                        count++;
+                    }
+                }
+            }
+        }
+        return count;
+    }
+}
+
+// A bit better approach O(n^2)
+
+class Solution {
+    public int numTeams(int[] rating) {
+        int res = 0;
+        for(int j=0;j<rating.length;j++)
+        {
+            int smaller_left = 0;int bigger_left = 0;
+            int smaller_right = 0;int bigger_right = 0;
+
+            for(int i = j-1;i>=0;i--)
+            {
+                if(rating[i] > rating[j])
+                {
+                    bigger_left++;
+                }
+                else
+                {
+                    smaller_left++;
+                }
+            }
+
+            for(int k=j+1;k<rating.length;k++)
+            {
+                if(rating[k] > rating[j]) bigger_right++;
+                else smaller_right++;
+            }
+
+            res += bigger_left*smaller_right + smaller_left*bigger_right;
+        }
+        return res;
+    }
+}
+
+// Idhula ena panromna oru element choose panitu adhuku left side adha vida chinadhu edhu check panro and right side adha vida perusu edhu check panroo andha maari panna
+//left*right combinations namaku kadaikum including that middle element adhae maari left side perusu and right side chinadhu check pananum.
