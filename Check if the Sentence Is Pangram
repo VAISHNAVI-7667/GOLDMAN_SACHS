@@ -1,0 +1,37 @@
+// Using hashing
+
+class Solution {
+    public boolean checkIfPangram(String sentence) {
+         boolean alpha[] = new boolean[26];
+
+         for(char ch : sentence.toCharArray())
+         {
+             alpha[ch -'a']=true;
+         }
+
+         for(boolean present : alpha)
+         {
+             if(!present) return false;
+         }
+         return true;
+    }
+}
+
+//Using set in java
+
+public boolean checkIfPangram(String sentence) {
+        Set<Character> s = new HashSet<>();
+        for (int i = 0; i < sentence.length(); ++i)
+            s.add(sentence.charAt(i));
+        return s.size() == 26;
+    }
+
+//Using Python 
+
+class Solution:
+    def checkIfPangram(self, sentence: str) -> bool:
+       s=set("abcdefghijklmnopqrstuvwxyz")
+       if set(sentence)==s:
+            return True
+       else:
+        return False
