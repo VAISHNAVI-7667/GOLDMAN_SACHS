@@ -1,3 +1,9 @@
+1st line is clear if and only if length of both strings are equal then there is chance that given goal 
+strings can be match in given string s after rotations, if length of both strings are not equal then we simply return false.
+Now we can use indexOf() method which returns starting index of string if its is present otherwise -1 or neagtive value , 
+means if goal string is present in s1 string then it return value >=0
+
+
 class Solution {
     public boolean rotateString(String s, String goal) {
         if(s.length()!=goal.length()) return false;
