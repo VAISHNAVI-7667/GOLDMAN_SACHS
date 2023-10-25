@@ -5,9 +5,9 @@ class Solution {
         for(int i=0;i<n;i++)
         {
             int a = asteroids[i];
-            while(j>0 &&asteroids[j-1]>0 && a<0 && asteroids[j-1]<Math.abs(a)) j--;
+            while(j>0 &&asteroids[j-1]>0 && a<0 && asteroids[j-1]<Math.abs(a)) j--;   //asteroids[j-1]>0 && a<0 this is used to check if both are of opposite sign
 
-            if(j==0 || a>0 || asteroids[j-1]<0) asteroids[j++] = a;
+            if(j==0 || a>0 || asteroids[j-1]<0) asteroids[j++] = a; //a>0 || asteroids[j-1]<0 this is also used to check if both are of opposite signs
             else if(asteroids[j-1] == Math.abs(a)) j--;
         }
 
