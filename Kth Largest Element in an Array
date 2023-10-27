@@ -1,0 +1,43 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        int l = 0;
+        int h = nums.length-1;
+        return getKth(nums,l,h,k);
+    }
+    public int getKth(int[] nums,int l,int h,int k)
+    {
+        int pivot = getPivot(nums,l,h);
+
+        if(pivot == k-1)
+        {
+            return nums[pivot];
+        }
+        else if(pivot < k-1)
+        {
+            return getKth(nums,pivot+1,h,k);
+        }
+        else
+        {
+            return getKth(nums,l,pivot-1,k);
+        }
+    }
+    public int getPivot(int []nums,int l,int h)
+    {
+        int p_ele = nums[h];
+        int p_point = l;
+        for(int i=l;i<=h;i++)
+        {
+            if(nums[i]>p_ele)
+            {
+                int t = nums[p_point];
+                nums[p_point]= nums[i];
+                nums[i] = t;
+                p_point++;
+            }
+        }
+        int temp = nums[h];
+        nums[h] = nums[p_point];
+        nums[p_point] = temp;
+        return p_point;
+    }
+}
